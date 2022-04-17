@@ -1,0 +1,43 @@
+$font-dir: "./assets/fonts/";
+
+@font-face {
+  font-family: "Roboto";
+  font-weight: 100;
+  src: url("#{$font-dir}Roboto-Thin.ttf") format("truetype");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-weight: 300;
+  src: url("#{$font-dir}Roboto-Light.ttf") format("truetype");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-weight: 400;
+  src: url("#{$font-dir}Roboto-Regular.ttf") format("truetype");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-weight: 500;
+  src: url("#{$font-dir}Roboto-Medium.ttf") format("truetype");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-weight: 700;
+  src: url("#{$font-dir}Roboto-Bold.ttf") format("truetype");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-weight: 900;
+  src: url("#{$font-dir}Roboto_Black.ttf") format("truetype");
+  font-style: normal;
+}

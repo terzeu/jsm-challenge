@@ -11,17 +11,18 @@ import FooterApp from "@/components/FooterApp.vue";
 </template>
 
 <style lang="scss">
-@import "@/assets/_page.scss";
+@import "@/assets/_fonts.scss";
 @import "@/assets/_normalize.scss";
 @import "@/assets/_variables.scss";
 
-main {
+body {
   background: white;
   color: $black;
   font-weight: normal;
   line-height: 1.5;
   text-rendering: optimizeLegibility;
   transition: color 0.5s, background-color 0.5s;
+  font-family: $font-main;
 }
 
 body,
@@ -36,5 +37,11 @@ body,
   flex-direction: column;
   justify-content: start;
   padding-top: $header-height;
+}
+
+input {
+  &:focus-visible {
+    outline: none;
+  }
 }
 </style>

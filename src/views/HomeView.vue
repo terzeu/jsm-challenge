@@ -1,5 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import PageLayout from "@/components/PageLayout.vue";
+</script>
 
 <template>
-  <main class="page">hello!</main>
+  <PageLayout title="Lista de membros">
+    <div>hello!</div>
+  </PageLayout>
 </template>

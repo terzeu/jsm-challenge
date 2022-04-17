@@ -1,15 +1,33 @@
+<script setup lang="ts">
+import SearchInput from "@/components/SearchInput.vue";
+
+const search = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  console.log(target.value);
+};
+</script>
 <template>
   <header class="header-app">
-    <div class="header-app__logo"></div>
-    <input class="header-app__search" />
-    <div class="header-app__others"></div>
+    <img
+      alt="Juntos Somos Mais logo"
+      class="header-app__logo"
+      src="@/assets/jsm_logo.png"
+    />
+    <div class="header-app__actions">
+      <SearchInput @search="search" class="header-app__search" />
+      <a> linkedin ou jsm site </a>
+      <a> github </a>
+    </div>
   </header>
 </template>
 <style scoped lang="scss">
 .header-app {
+  align-items: center;
   background-color: $gray-1;
   display: flex;
+  justify-content: space-between;
   height: $header-height;
+  padding: 0 $section-gap;
   position: fixed;
   top: 0;
   width: 100%;
@@ -19,9 +37,22 @@
     width: 148px;
   }
 
+  &__actions {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    justify-content: end;
+    margin-left: 140px;
+
+    :not(:last-child) {
+      margin-right: 16px;
+    }
+  }
+
   &__search {
     height: 48px;
     max-width: 464px;
+    flex: 1;
   }
 }
 </style>
