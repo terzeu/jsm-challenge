@@ -30,7 +30,8 @@ body,
 #app {
   display: flex;
   min-height: 100vh;
-  min-width: 100vw;
+  width: 100vw;
+  max-width: 100%;
   place-items: center;
 }
 
