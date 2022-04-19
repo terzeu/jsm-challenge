@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { RouterView } from "vue-router";
-import HeaderApp from "@/components/HeaderApp.vue";
-import FooterApp from "@/components/FooterApp.vue";
+import { RouterView } from 'vue-router'
+import HeaderApp from '@/components/HeaderApp.vue'
+import FooterApp from '@/components/FooterApp.vue'
 </script>
 
 <template>
@@ -11,9 +11,10 @@ import FooterApp from "@/components/FooterApp.vue";
 </template>
 
 <style lang="scss">
-@import "@/assets/_fonts.scss";
-@import "@/assets/_normalize.scss";
-@import "@/assets/_variables.scss";
+@import '@/assets/_base.scss';
+@import '@/assets/_fonts.scss';
+@import '@/assets/_normalize.scss';
+@import '@/assets/_variables.scss';
 
 body {
   background: white;
@@ -37,11 +38,5 @@ body,
   flex-direction: column;
   justify-content: start;
   padding-top: $header-height;
-}
-
-input {
-  &:focus-visible {
-    outline: none;
-  }
 }
 </style>

@@ -1,0 +1,12 @@
+.btn {
+  &--link {
+    text-decoration: underline;
+  }
+}
+
+input {
+  &:focus-visible {
+    outline: none;
+  }
+}
+

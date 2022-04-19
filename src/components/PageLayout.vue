@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import Breadcrumb from '@/components/Breadcrumb.vue'
+defineProps<{
+  title: string
+}>()
+</script>
 <template>
   <section class="page-layout">
     <Breadcrumb class="page-layout__navigation" />
@@ -7,13 +13,7 @@
     <slot />
   </section>
 </template>
-<script setup lang="ts">
-import Breadcrumb from "@/components/Breadcrumb.vue";
-defineProps<{
-  title: string;
-}>();
-</script>
-<style lang="scss">
+<style scoped lang="scss">
 .page-layout {
   flex: 1;
   padding: 24px $section-gap 80px;

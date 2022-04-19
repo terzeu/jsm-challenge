@@ -1,14 +1,24 @@
 import { http } from '@/config/http'
-import type { AxiosPromise } from 'axios'
-import type IMember from '@/types/IMember'
 
-const getMembers = () :AxiosPromise<IMember[]> => {
+const getMembers = () => {
   return http({
-    url: '/test',
-    method: 'get'
+    url: '/members',
+    method: 'get',
   })
 }
 
-export {
-  getMembers
+const getMember = (id: number) => {
+  return http({
+    url: `/members/${id}`,
+    method: 'get',
+  })
 }
+
+const geStates = () => {
+  return http({
+    url: '/members/states',
+    method: 'get',
+  })
+}
+
+export { getMembers, getMember, geStates }

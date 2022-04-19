@@ -6,6 +6,6 @@ export const http = axios.create({
   headers: {
     'cache-control': 'no-cache',
     'Content-Type': 'application/json',
-    Accept: '*/*'
-  }
+    Accept: '*/*',
+  },
 })

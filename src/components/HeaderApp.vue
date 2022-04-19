@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import SearchInput from "@/components/SearchInput.vue";
+import SearchInput from '@/components/SearchInput.vue'
 
 const search = (event: Event) => {
-  const target = event.target as HTMLInputElement;
-  console.log(target.value);
-};
+  const target = event.target as HTMLInputElement
+  console.log(target.value)
+}
 </script>
 <template>
   <header class="header-app">

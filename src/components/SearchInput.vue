@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import IconSearch from "@/components/icons/IconSearch.vue";
+import IconSearch from '@/components/icons/IconSearch.vue'
 
 defineEmits<{
-  (e: "search", value: Event): void;
-}>();
+  (e: 'search', value: Event): void
+}>()
 </script>
 <template>
   <div class="search-input">
