@@ -12,24 +12,26 @@ const emits = defineEmits<{
 }>()
 
 const isFirstPage: ComputedRef<boolean> = computed(() => props.activePage === 0)
-const isLastPage: ComputedRef<boolean> = computed(() => props.activePage === props.totalPages -1)
+const isLastPage: ComputedRef<boolean> = computed(
+  () => props.activePage === props.totalPages - 1
+)
 const pagesToShow: ComputedRef<number[]> = computed(() => {
-  if(props.totalPages > 5) {
+  if (props.totalPages > 5) {
     let incrementFactor = 0
 
     // overflow cases
-    if(props.activePage - 1 <= 0) {
+    if (props.activePage - 1 <= 0) {
       incrementFactor = 2 - props.activePage
-    } else if(props.activePage >= props.totalPages - 2) {
+    } else if (props.activePage >= props.totalPages - 2) {
       incrementFactor = props.totalPages - 3 - props.activePage
     }
 
     return [
       0,
-      props.activePage -1 + incrementFactor,
+      props.activePage - 1 + incrementFactor,
       props.activePage + incrementFactor,
       props.activePage + 1 + incrementFactor,
-      props.totalPages -1
+      props.totalPages - 1,
     ]
   } else {
     return [...Array(props.totalPages).keys()]
@@ -38,7 +40,7 @@ const pagesToShow: ComputedRef<number[]> = computed(() => {
 
 const handleCallPage = (page: number) => {
   // filtering disabled clicks
-  if ((page <= (props.totalPages - 1)) && (page >= 0) && (page !== props.activePage)) {
+  if (page <= props.totalPages - 1 && page >= 0 && page !== props.activePage) {
     emits('update', page)
   }
 }
@@ -47,7 +49,7 @@ const handleCallPage = (page: number) => {
   <div class="pagination">
     <button
       class="pagination__nav pagination__nav--left"
-      :class="{'pagination__nav--disabled': isFirstPage}"
+      :class="{ 'pagination__nav--disabled': isFirstPage }"
       @click="handleCallPage(activePage - 1)"
     >
       <IconChevronLeft />
@@ -56,17 +58,15 @@ const handleCallPage = (page: number) => {
       v-for="item in pagesToShow"
       :key="item"
       class="pagination__page"
-      :class="{'pagination__page--active': activePage === item}"
+      :class="{ 'pagination__page--active': activePage === item }"
       @click="handleCallPage(item)"
     >
       {{ item + 1 }}
-      <span
-        v-if="activePage === item"
-      />
+      <span v-if="activePage === item" />
     </button>
     <button
       class="pagination__nav pagination__nav--right"
-      :class="{'pagination__nav--disabled': isLastPage}"
+      :class="{ 'pagination__nav--disabled': isLastPage }"
       @click="handleCallPage(activePage + 1)"
     >
       <IconChevronRight />
@@ -87,7 +87,7 @@ const handleCallPage = (page: number) => {
     height: 32px;
     justify-content: center;
     width: 32px;
-    
+
     &--disabled {
       background: $gray-6;
       cursor: default;
@@ -115,7 +115,7 @@ const handleCallPage = (page: number) => {
       font-size: $text-md;
       font-weight: 700;
       cursor: default;
-      
+
       span {
         background: $gray-3;
         border-radius: 9px;

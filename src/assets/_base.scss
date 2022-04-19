@@ -4,6 +4,19 @@
   }
 }
 
+.icon {
+  &--social-midia {
+    align-items: center;
+    background-color: $blue;
+    border-radius: 20px;
+    color: white;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    width: 40px;
+  }
+}
+
 input {
   &:focus-visible {
     outline: none;

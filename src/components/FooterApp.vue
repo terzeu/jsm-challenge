@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  import IconLogo from '@/components/icons/IconLogo.vue'
-  import IconFacebook from '@/components/icons/IconFacebook.vue'
-  import IconLinkedin from '@/components/icons/IconLinkedin.vue'
-  import IconInstagram from '@/components/icons/IconInstagram.vue'
+import IconLogo from '@/components/icons/IconLogo.vue'
+import IconFacebook from '@/components/icons/IconFacebook.vue'
+import IconLinkedin from '@/components/icons/IconLinkedin.vue'
+import IconInstagram from '@/components/icons/IconInstagram.vue'
 </script>
 <template>
   <footer class="footer-app">
@@ -11,13 +11,25 @@
     <section class="footer-app__social-midia">
       <p class="footer-app__description">Siga-nos nas redes sociais:</p>
       <div class="footer-app__nav">
-        <a href="https://www.facebook.com/juntossomosmais/" target="_blank" class="footer-app__icon">
+        <a
+          href="https://www.facebook.com/juntossomosmais/"
+          target="_blank"
+          class="footer-app__icon icon--social-midia"
+        >
           <IconFacebook />
         </a>
-        <a href="https://www.linkedin.com/company/juntos-somos-mais/" target="_blank" class="footer-app__icon">
+        <a
+          href="https://www.linkedin.com/company/juntos-somos-mais/"
+          target="_blank"
+          class="footer-app__icon icon--social-midia"
+        >
           <IconLinkedin />
         </a>
-        <a href="https://www.instagram.com/juntossomosmais/" target="_blank" class="footer-app__icon">
+        <a
+          href="https://www.instagram.com/juntossomosmais/"
+          target="_blank"
+          class="footer-app__icon icon--social-midia"
+        >
           <IconInstagram />
         </a>
       </div>
@@ -52,16 +64,6 @@
     justify-content: space-between;
     width: 152px;
     margin: auto;
-  }
-
-  &__icon {
-    align-items: center;
-    background-color: $blue;
-    border-radius: 20px;
-    display: flex;
-    height: 40px;
-    justify-content: center;
-    width: 40px;
   }
 }
 </style>

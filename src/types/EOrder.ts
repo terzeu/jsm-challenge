@@ -1,6 +1,6 @@
 enum EOrder {
   DESC = 'desc',
-  ASC = 'asc'
+  ASC = 'asc',
 }
 
 export default EOrder

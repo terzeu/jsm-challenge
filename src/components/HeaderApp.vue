@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import SearchInput from '@/components/SearchInput.vue'
+import IconLinkedin from '@/components/icons/IconLinkedin.vue'
+import IconGithub from '@/components/icons/IconGithub.vue'
 import { useHeaderStore } from '@/stores/header'
 import { debounce } from '@/utils'
 
@@ -8,7 +10,7 @@ const debounceSearch = debounce(headerStore.updateSearch, 300)
 
 const search = (event: Event) => {
   const { value } = event.target as HTMLInputElement
-  
+
   debounceSearch(value)
 }
 </script>
@@ -21,8 +23,20 @@ const search = (event: Event) => {
     />
     <div class="header-app__actions">
       <SearchInput @search="search" class="header-app__search" />
-      <a> linkedin ou jsm site </a>
-      <a> github </a>
+      <a
+        href="https://www.linkedin.com/in/matheus--soares-rosa/"
+        target="_blank"
+        class="header-app__icon icon--social-midia"
+      >
+        <IconLinkedin />
+      </a>
+      <a
+        href="https://github.com/terzeu"
+        target="_blank"
+        class="header-app__icon icon--social-midia"
+      >
+        <IconGithub />
+      </a>
     </div>
   </header>
 </template>
@@ -50,16 +64,17 @@ const search = (event: Event) => {
     flex: 1;
     justify-content: end;
     margin-left: 140px;
-
-    :not(:last-child) {
-      margin-right: 16px;
-    }
+    margin-right: 16px;
   }
 
   &__search {
     height: 48px;
     max-width: 464px;
     flex: 1;
+  }
+
+  &__icon {
+    margin-left: 16px;
   }
 }
 </style>

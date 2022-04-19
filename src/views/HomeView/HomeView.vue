@@ -17,8 +17,12 @@ import type IStates from '@/types/IStates'
 const membersStore = useMembersStore()
 const headerStore = useHeaderStore()
 
-const membersList: ComputedRef<IMember[]> = computed(() => membersStore.membersList)
-const membersPagination: ComputedRef<IPagination> = computed(() => membersStore.pagination)
+const membersList: ComputedRef<IMember[]> = computed(
+  () => membersStore.membersList
+)
+const membersPagination: ComputedRef<IPagination> = computed(
+  () => membersStore.pagination
+)
 const states: ComputedRef<IStates[]> = computed(() => membersStore.states)
 const searchHeader: ComputedRef<string> = computed(() => headerStore.search)
 const statesToFilter: Ref<ICheckbox[]> = ref([])
@@ -26,8 +30,13 @@ const isDesc: Ref<boolean> = ref(true)
 const activePage: Ref<number> = ref(0)
 
 const getMembersList = () => {
-  const order:EOrder = isDesc.value ? EOrder.DESC : EOrder.ASC
-  membersStore.fetchMembers(activePage.value, order, statesToFilter.value, searchHeader.value)
+  const order: EOrder = isDesc.value ? EOrder.DESC : EOrder.ASC
+  membersStore.fetchMembers(
+    activePage.value,
+    order,
+    statesToFilter.value,
+    searchHeader.value
+  )
 }
 
 const updatePage = (page: number) => {
@@ -113,7 +122,7 @@ watch(activePage, () => {
 
   &__list,
   &__sort {
-    width: 100%
+    width: 100%;
   }
 }
 </style>

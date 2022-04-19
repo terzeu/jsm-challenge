@@ -12,7 +12,7 @@ export const useMembersStore = defineStore({
       members: [] as IMember[],
       elementsOfPage: 0,
       totalPages: 0,
-      totalElements: 0
+      totalElements: 0,
     },
     member: null as null | IMember,
     states: [] as IStates[],
@@ -22,18 +22,20 @@ export const useMembersStore = defineStore({
     pagination: (state) => ({
       elementsOfPage: state.membersPage.elementsOfPage,
       totalPages: state.membersPage.totalPages,
-      totalElements: state.membersPage.totalElements
+      totalElements: state.membersPage.totalElements,
     }),
   },
   actions: {
     async fetchMembers(
       page: number,
-      sort:EOrder = EOrder.DESC,
+      sort: EOrder = EOrder.DESC,
       states: ICheckbox[] = [],
       search?: string,
       size = 9
     ) {
-      const filters = states.filter(input => input.checked).map(input => input.value)
+      const filters = states
+        .filter((input) => input.checked)
+        .map((input) => input.value)
 
       try {
         const response = await getMembers(page, size, sort, filters, search)

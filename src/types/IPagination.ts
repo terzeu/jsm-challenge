@@ -1,6 +1,6 @@
 interface IPagination {
-  elementsOfPage: number,
-  totalPages: number,
+  elementsOfPage: number
+  totalPages: number
   totalElements: number
 }
 
