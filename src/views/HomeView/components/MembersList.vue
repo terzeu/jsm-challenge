@@ -4,6 +4,9 @@ import type IMember from '@/types/IMember'
 defineProps<{
   members: IMember[]
 }>()
+defineEmits<{
+  (e: 'callDetail', value: number): void
+}>()
 
 const streetNormalize = (street: string) => {
   const [number, streetWithoutNumber] = street.trim().split(' rua ')
@@ -12,7 +15,7 @@ const streetNormalize = (street: string) => {
 </script>
 <template>
   <ul class="members-list">
-    <li v-for="member in members" :key="member.id" class="members-list__card">
+    <li v-for="member in members" :key="member.id" @click="$emit('callDetail', member.id)" class="members-list__card">
       <img
         v-if="member.picture.large"
         :src="member.picture.large"
@@ -52,6 +55,7 @@ const streetNormalize = (street: string) => {
     background: #ffffff;
     border: 1px solid $gray-6;
     border-radius: 4px;
+    cursor: pointer;
     display: flex;
     width: 272px;
     flex-flow: column;

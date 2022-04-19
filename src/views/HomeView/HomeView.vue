@@ -13,9 +13,11 @@ import type ICheckbox from '@/types/ICheckbox'
 import type IMember from '@/types/IMember'
 import type IPagination from '@/types/IPagination'
 import type IStates from '@/types/IStates'
+import { useRouter } from 'vue-router'
 
 const membersStore = useMembersStore()
 const headerStore = useHeaderStore()
+const router = useRouter()
 
 const membersList: ComputedRef<IMember[]> = computed(
   () => membersStore.membersList
@@ -41,6 +43,10 @@ const getMembersList = () => {
 
 const updatePage = (page: number) => {
   activePage.value = page
+}
+
+const pushDetailRoute = (id: number) => {
+  router.push({name: 'memberDetail', params: { id }})
 }
 
 membersStore.fetchStates()
@@ -91,7 +97,11 @@ watch(activePage, () => {
           :sortParam="'nome'"
           class="home-view__sort"
         />
-        <MembersList :members="membersList" class="home-view__list" />
+        <MembersList
+          :members="membersList"
+          class="home-view__list"
+          @callDetail="pushDetailRoute"
+        />
         <Pagination
           :activePage="activePage"
           :totalPages="membersPagination.totalPages"
