@@ -1,9 +1,15 @@
 <script setup lang="ts">
 import SearchInput from '@/components/SearchInput.vue'
+import { useHeaderStore } from '@/stores/header'
+import { debounce } from '@/utils'
+
+const headerStore = useHeaderStore()
+const debounceSearch = debounce(headerStore.updateSearch, 300)
 
 const search = (event: Event) => {
-  const target = event.target as HTMLInputElement
-  console.log(target.value)
+  const { value } = event.target as HTMLInputElement
+  
+  debounceSearch(value)
 }
 </script>
 <template>
@@ -27,6 +33,7 @@ const search = (event: Event) => {
   display: flex;
   justify-content: space-between;
   height: $header-height;
+  left: 0;
   padding: 0 $section-gap;
   position: fixed;
   top: 0;

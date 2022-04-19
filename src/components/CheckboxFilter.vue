@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import CheckboxBlank from '../components/icons/CheckboxBlank.vue'
-import CheckboxChecked from '../components/icons/CheckboxChecked.vue'
-import ICheckbox from '../types/ICheckbox'
+import IconCheckboxBlank from '../components/icons/IconCheckboxBlank.vue'
+import IconCheckboxChecked from '../components/icons/IconCheckboxChecked.vue'
+import type ICheckbox from '../types/ICheckbox'
 
 const props = defineProps<{
   title: string
@@ -39,11 +39,11 @@ const clearFiler = () => {
         @click="checkbox.checked = !checkbox.checked"
         class="checkbox-filter__input-group"
       >
-        <CheckboxChecked
+        <IconCheckboxChecked
           v-if="checkbox.checked"
           class="checkbox-filter__check"
         />
-        <CheckboxBlank v-else class="checkbox-filter__check" />
+        <IconCheckboxBlank v-else class="checkbox-filter__check" />
         <input
           v-model="checkbox.checked"
           type="checkbox"

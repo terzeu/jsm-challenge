@@ -1,6 +1,14 @@
 interface IMember {
   id: number
-  name: string
+  cell: string
+  email: string
+  gender: string
+  name: {
+    first: string
+    full: string
+    last: string
+    title: string
+  },
   location: {
     street: string
     city: string
@@ -14,7 +22,17 @@ interface IMember {
       offset: string
       description: string
     }
+  },
+  picture: {
+    large: string
+    medium: string
+    thumbnail: string
+  },
+  registered: {
+    date: string
+    age: 14
   }
+  date: string
 }
 
 export default IMember

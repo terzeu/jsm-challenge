@@ -10,3 +10,11 @@ input {
   }
 }
 
+p,
+h2,
+h4 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}

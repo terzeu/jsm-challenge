@@ -1,8 +1,16 @@
 import { http } from '@/config/http'
+import type EOrder from '@/types/EOrder'
 
-const getMembers = () => {
+const getMembers = (page: number, size: number, sort: EOrder, filters: string[], search?: string) => {
   return http({
     url: '/members',
+    params: {
+      page,
+      size,
+      sort,
+      filters,
+      search
+    },
     method: 'get',
   })
 }

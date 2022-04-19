@@ -3,20 +3,39 @@ import { computed, ref, watch, type Ref } from 'vue'
 import type { ComputedRef } from 'vue'
 import CheckboxFilter from '@/components/CheckboxFilter.vue'
 import HeaderToSort from '@/components/HeaderToSort.vue'
+import MembersList from './components/MembersList.vue'
 import PageLayout from '@/components/PageLayout.vue'
+import Pagination from '@/components/Pagination.vue'
 import { useMembersStore } from '@/stores/members'
-import type IMember from '@/types/IMember'
-import type IStates from '@/types/IStates'
+import { useHeaderStore } from '@/stores/header'
+import EOrder from '@/types/EOrder'
 import type ICheckbox from '@/types/ICheckbox'
+import type IMember from '@/types/IMember'
+import type IPagination from '@/types/IPagination'
+import type IStates from '@/types/IStates'
 
 const membersStore = useMembersStore()
-membersStore.fetchMembers()
-membersStore.fetchStates()
+const headerStore = useHeaderStore()
 
-const membersList: ComputedRef<IMember[]> = computed(() => membersStore.members)
+const membersList: ComputedRef<IMember[]> = computed(() => membersStore.membersList)
+const membersPagination: ComputedRef<IPagination> = computed(() => membersStore.pagination)
 const states: ComputedRef<IStates[]> = computed(() => membersStore.states)
+const searchHeader: ComputedRef<string> = computed(() => headerStore.search)
 const statesToFilter: Ref<ICheckbox[]> = ref([])
 const isDesc: Ref<boolean> = ref(true)
+const activePage: Ref<number> = ref(0)
+
+const getMembersList = () => {
+  const order:EOrder = isDesc.value ? EOrder.DESC : EOrder.ASC
+  membersStore.fetchMembers(activePage.value, order, statesToFilter.value, searchHeader.value)
+}
+
+const updatePage = (page: number) => {
+  activePage.value = page
+}
+
+membersStore.fetchStates()
+getMembersList()
 
 watch(states, (newStates) => {
   statesToFilter.value = newStates.map((state) => ({
@@ -27,6 +46,28 @@ watch(states, (newStates) => {
     value: state.state,
   }))
 })
+
+watch(
+  statesToFilter,
+  (newValue, oldValue) => {
+    if (oldValue.length) {
+      getMembersList()
+    }
+  },
+  { deep: true }
+)
+
+watch(isDesc, () => {
+  getMembersList()
+})
+
+watch(searchHeader, () => {
+  getMembersList()
+})
+
+watch(activePage, () => {
+  getMembersList()
+})
 </script>
 
 <template>
@@ -36,10 +77,17 @@ watch(states, (newStates) => {
       <div class="home-view__members">
         <HeaderToSort
           v-model:isDesc="isDesc"
-          :showing="9"
-          :total="25"
+          :showing="membersPagination.elementsOfPage"
+          :total="membersPagination.totalElements"
           :sortParam="'nome'"
           class="home-view__sort"
+        />
+        <MembersList :members="membersList" class="home-view__list" />
+        <Pagination
+          :activePage="activePage"
+          :totalPages="membersPagination.totalPages"
+          @update="updatePage"
+          class="home-view__pagination"
         />
       </div>
     </div>
@@ -52,8 +100,20 @@ watch(states, (newStates) => {
   }
 
   &__members {
-    margin-left: 16px;
+    align-items: center;
+    display: flex;
     flex: 1;
+    flex-direction: column;
+    margin-left: 16px;
+  }
+
+  &__sort {
+    margin-bottom: 16px;
+  }
+
+  &__list,
+  &__sort {
+    width: 100%
   }
 }
 </style>

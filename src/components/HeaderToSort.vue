@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import ExpandMore from '@/components/icons/ExpandMore.vue'
-import ExpandLess from '@/components/icons/ExpandLess.vue'
+import IconExpandMore from '@/components/icons/IconExpandMore.vue'
+import IconExpandLess from '@/components/icons/IconExpandLess.vue'
 
 defineProps<{
   isDesc: boolean
@@ -23,8 +23,8 @@ defineEmits<{
     >
       <span class="header-to-sort__label">Ordenar por:</span>
       <span class="header-to-sort__param">{{ sortParam }}</span>
-      <ExpandMore class="header-to-sort__icon" v-if="isDesc" />
-      <ExpandLess class="header-to-sort__icon" v-else />
+      <IconExpandMore class="header-to-sort__icon" v-if="isDesc" />
+      <IconExpandLess class="header-to-sort__icon" v-else />
     </button>
   </section>
 </template>
