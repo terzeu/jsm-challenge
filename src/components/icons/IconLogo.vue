@@ -45,7 +45,7 @@
             x="56.0879"
             width="119.912"
             height="48"
-            fill="white"
+            fill="currentColor"
           />
         </g>
       </g>
