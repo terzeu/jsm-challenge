@@ -14,7 +14,7 @@ export const useMembersStore = defineStore({
       totalPages: 0,
       totalElements: 0,
     },
-    member: null as null | IMember,
+    member: undefined as undefined | null | IMember,
     states: [] as IStates[],
   }),
   getters: {
@@ -46,9 +46,11 @@ export const useMembersStore = defineStore({
     },
     async fetchMember(id: number) {
       try {
+        this.member = undefined
         const response = await getMember(id)
         this.member = response.data
       } catch (error) {
+        this.member = null
         return error
       }
     },

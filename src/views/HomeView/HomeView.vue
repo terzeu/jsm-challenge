@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, ref, watch, type Ref } from 'vue'
-import type { ComputedRef } from 'vue'
+import { computed, ref, watch, type ComputedRef, type Ref } from 'vue'
+import { useRouter } from 'vue-router'
 import CheckboxFilter from '@/components/CheckboxFilter.vue'
 import HeaderToSort from '@/components/HeaderToSort.vue'
 import MembersList from './components/MembersList.vue'
@@ -13,7 +13,6 @@ import type ICheckbox from '@/types/ICheckbox'
 import type IMember from '@/types/IMember'
 import type IPagination from '@/types/IPagination'
 import type IStates from '@/types/IStates'
-import { useRouter } from 'vue-router'
 
 const membersStore = useMembersStore()
 const headerStore = useHeaderStore()
@@ -46,7 +45,7 @@ const updatePage = (page: number) => {
 }
 
 const pushDetailRoute = (id: number) => {
-  router.push({name: 'memberDetail', params: { id }})
+  router.push({ name: 'memberDetail', params: { id } })
 }
 
 membersStore.fetchStates()

@@ -1,7 +1,23 @@
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  props: {
+    width: {
+      type: Number,
+      default: 80,
+    },
+    height: {
+      type: Number,
+      default: 80,
+    },
+  },
+})
+</script>
 <template>
   <svg
-    width="80"
-    height="80"
+    :width="width"
+    :height="height"
     viewBox="0 0 80 80"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

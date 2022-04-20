@@ -73,7 +73,7 @@ const handleCallPage = (page: number) => {
     </button>
   </div>
 </template>
-<style lang="scss">
+<style scoped lang="scss">
 .pagination {
   align-items: center;
   display: flex;

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import IconAvatar from '@/components/icons/IconAvatar.vue'
+import RoundedAvatar from '@/components/RoundedAvatar.vue'
 import type IMember from '@/types/IMember'
 defineProps<{
   members: IMember[]
@@ -15,16 +15,17 @@ const streetNormalize = (street: string) => {
 </script>
 <template>
   <ul class="members-list">
-    <li v-for="member in members" :key="member.id" @click="$emit('callDetail', member.id)" class="members-list__card">
-      <img
-        v-if="member.picture.large"
-        :src="member.picture.large"
+    <li
+      v-for="member in members"
+      :key="member.id"
+      @click="$emit('callDetail', member.id)"
+      class="members-list__card"
+    >
+      <RoundedAvatar
         :alt="`Foto do membro ${member.name.first}`"
-        width="80"
-        height="80"
+        :photo="member.picture.large"
         class="members-list__photo"
       />
-      <IconAvatar v-else />
       <h4 class="members-list__title">
         {{ member.name.full }}
       </h4>
@@ -40,7 +41,7 @@ const streetNormalize = (street: string) => {
     </li>
   </ul>
 </template>
-<style lang="scss">
+<style scoped lang="scss">
 .members-list {
   display: flex;
   flex-wrap: wrap;
@@ -67,7 +68,6 @@ const streetNormalize = (street: string) => {
   }
 
   &__photo {
-    border-radius: 40px;
     margin-bottom: 24px;
   }
 

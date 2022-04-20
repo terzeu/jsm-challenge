@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import IconLogo from '@/components/icons/IconLogo.vue'
 import IconFacebook from '@/components/icons/IconFacebook.vue'
 import IconLinkedin from '@/components/icons/IconLinkedin.vue'
 import IconInstagram from '@/components/icons/IconInstagram.vue'
 </script>
 <template>
   <footer class="footer-app">
-    <IconLogo />
+    <img
+      alt="Juntos Somos Mais logo"
+      class="footer-app__logo"
+      src="@/assets/jsm_white_logo.png"
+    />
     <p class="footer-app__title">Juntos Somos Mais Fidelização S.A.</p>
     <section class="footer-app__social-midia">
       <p class="footer-app__description">Siga-nos nas redes sociais:</p>
