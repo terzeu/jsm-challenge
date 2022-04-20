@@ -1,0 +1,24 @@
+#app {
+  @media (max-width: 640px) {
+    .header-app {
+      // padding: 20px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    width: 48rem;
+  }
+  
+  @media (max-width: 1024px) {
+    width: 64rem;
+  }
+  
+  @media (max-width: 1400px) {
+    width: 66rem;
+  }
+  
+  @media (max-width: 1601px) {
+    width: 80rem;
+  }
+}
+

@@ -57,31 +57,35 @@ const photoAlt = computed(
       <div class="member-detail__data">
         <div class="member-detail__info">
           <h4 class="member-detail__subtitle">Telefone:</h4>
-          <span>{{ member.cell }}</span>
+          <span class="member-detail__value">{{ member.cell }}</span>
         </div>
         <div class="member-detail__info">
           <h4 class="member-detail__subtitle">Email:</h4>
-          <span>{{ member.email }}</span>
+          <span class="member-detail__value">{{ member.email }}</span>
         </div>
         <div class="member-detail__info">
           <h4 class="member-detail__subtitle">Gênero:</h4>
-          <span>{{ gender }}</span>
+          <span class="member-detail__value">{{ gender }}</span>
         </div>
         <div class="member-detail__info">
           <h4 class="member-detail__subtitle">Registro:</h4>
-          <span>{{ registeredDate }}</span>
+          <span class="member-detail__value">{{ registeredDate }}</span>
         </div>
         <div class="member-detail__info">
           <h4 class="member-detail__subtitle">Cidade:</h4>
-          <span class="txt-capitalize">{{ city }}</span>
+          <span class="member-detail__value txt-overflow txt-capitalize">{{
+            city
+          }}</span>
         </div>
         <div class="member-detail__info">
           <h4 class="member-detail__subtitle">Rua:</h4>
-          <span class="txt-capitalize">{{ street }}</span>
+          <span class="member-detail__value txt-capitalize">{{ street }}</span>
         </div>
         <div class="member-detail__info">
           <h4 class="member-detail__subtitle">CEP:</h4>
-          <span>{{ member.location.postcode }}</span>
+          <span class="member-detail__value">{{
+            member.location.postcode
+          }}</span>
         </div>
       </div>
     </div>
@@ -137,6 +141,13 @@ const photoAlt = computed(
   &__description {
     font-size: $text-lg;
     margin-top: 20px;
+  }
+
+  &__value {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   :deep(.page-layout__title) {

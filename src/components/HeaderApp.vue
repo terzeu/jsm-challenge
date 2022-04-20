@@ -56,6 +56,7 @@ const search = (event: Event) => {
   &__logo {
     height: 40px;
     width: 148px;
+    margin-right: 20px;
   }
 
   &__actions {
@@ -63,8 +64,6 @@ const search = (event: Event) => {
     display: flex;
     flex: 1;
     justify-content: end;
-    margin-left: 140px;
-    margin-right: 16px;
   }
 
   &__search {

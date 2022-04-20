@@ -28,5 +28,9 @@ defineProps<{
     font-weight: 700;
     margin-bottom: 40px;
   }
+
+  @media (max-width: 883px) {
+    padding: 20px;
+  }
 }
 </style>

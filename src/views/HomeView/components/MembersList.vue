@@ -44,10 +44,6 @@ defineEmits<{
   flex-wrap: wrap;
   justify-content: space-between;
 
-  & > :nth-child(3n + 3) {
-    margin-right: 0;
-  }
-
   &__card {
     align-items: center;
     background: #ffffff;
@@ -87,6 +83,39 @@ defineEmits<{
 
   &__adress {
     font-size: $text-xs;
+  }
+
+  @media (min-width: 2035px) {
+    & > :nth-child(5n + 5) {
+      margin-right: 0;
+    }
+  }
+
+  @media (min-width: 1763px) and (max-width: 2035px) {
+    & > :nth-child(4n + 4) {
+      margin-right: 0;
+    }
+  }
+
+  @media (min-width: 1458px) and (max-width: 1763px) {
+    & > :nth-child(3n + 3) {
+      margin-right: 0;
+    }
+  }
+
+  @media (min-width: 1170px) and (max-width: 1458px) {
+    & > :nth-child(2n + 2) {
+      margin-right: 0;
+    }
+  }
+
+  @media (max-width: 1170px) {
+    align-items: center;
+    flex-direction: column;
+
+    &__card {
+      margin-right: 0;
+    }
   }
 }
 </style>

@@ -87,7 +87,11 @@ watch(activePage, () => {
 <template>
   <PageLayout title="Lista de membros" class="home-view">
     <div class="home-view__content">
-      <CheckboxFilter title="Por Estado" :filters="statesToFilter" />
+      <CheckboxFilter
+        :filters="statesToFilter"
+        title="Por Estado"
+        class="home-view__states"
+      />
       <div class="home-view__members">
         <HeaderToSort
           v-model:isDesc="isDesc"
@@ -115,6 +119,7 @@ watch(activePage, () => {
 .home-view {
   &__content {
     display: flex;
+    flex-wrap: wrap;
   }
 
   &__members {
@@ -136,6 +141,16 @@ watch(activePage, () => {
   &__list,
   &__sort {
     width: 100%;
+  }
+
+  @media (max-width: 883px) {
+    &__content {
+      justify-content: center;
+    }
+
+    &__states {
+      margin-bottom: 16px;
+    }
   }
 }
 </style>
