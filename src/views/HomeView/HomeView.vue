@@ -129,6 +129,10 @@ watch(activePage, () => {
     margin-bottom: 16px;
   }
 
+  &__pagination {
+    margin-top: 40px;
+  }
+
   &__list,
   &__sort {
     width: 100%;

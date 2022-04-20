@@ -1,17 +1,14 @@
 <script setup lang="ts">
 import RoundedAvatar from '@/components/RoundedAvatar.vue'
+import { streetNormalize } from '@/utils'
 import type IMember from '@/types/IMember'
+
 defineProps<{
   members: IMember[]
 }>()
 defineEmits<{
   (e: 'callDetail', value: number): void
 }>()
-
-const streetNormalize = (street: string) => {
-  const [number, streetWithoutNumber] = street.trim().split(' rua ')
-  return `Rua ${streetWithoutNumber}, ${number}`
-}
 </script>
 <template>
   <ul class="members-list">

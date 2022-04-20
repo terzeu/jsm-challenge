@@ -10,3 +10,8 @@ export function debounce<Params extends unknown[]>(
     }, timeout)
   }
 }
+
+export const streetNormalize = (street: string) => {
+  const [number, streetWithoutNumber] = street.trim().split(' rua ')
+  return `Rua ${streetWithoutNumber}, ${number}`
+}

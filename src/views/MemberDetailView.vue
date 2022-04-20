@@ -4,11 +4,18 @@ import { useRoute } from 'vue-router'
 import PageLayout from '@/components/PageLayout.vue'
 import { useMembersStore } from '@/stores/members'
 import RoundedAvatar from '@/components/RoundedAvatar.vue'
+import { streetNormalize } from '@/utils'
 import ESize from '@/types/ESize'
+import EGender from '@/types/EGender'
 
 const membersStore = useMembersStore()
 const route = useRoute()
 const memberId = computed(() => Number(route.params.id))
+const genderTranslate = {
+  [EGender.MALE]: 'Masculino',
+  [EGender.FEMALE]: 'Femenino',
+  [EGender.OTHERS]: 'Outros',
+}
 
 membersStore.fetchMember(memberId.value)
 
@@ -21,6 +28,22 @@ const pageTitle = computed(() => {
     : ''
 })
 const photo = computed(() => member.value?.picture.large || '')
+const gender = computed(() =>
+  member.value ? genderTranslate[member.value.gender as EGender] : ''
+)
+const registeredDate = computed(() =>
+  member.value
+    ? new Date(member.value.registered.date).toLocaleDateString()
+    : ''
+)
+const street = computed(() =>
+  member.value ? streetNormalize(member.value.location.street) : ''
+)
+const city = computed(() =>
+  member.value
+    ? member.value.location.city + ' - ' + member.value.location.state
+    : ''
+)
 const photoAlt = computed(
   () => `Foto do membro ${member.value?.name.first || ''}`
 )
@@ -28,6 +51,9 @@ const photoAlt = computed(
 <template>
   <PageLayout :title="pageTitle" class="member-detail">
     <div v-if="member" class="member-detail__content">
+      <div class="member-detail__photo">
+        <RoundedAvatar :alt="photoAlt" :photo="photo" :size="ESize.LG" />
+      </div>
       <div class="member-detail__data">
         <div class="member-detail__info">
           <h4 class="member-detail__subtitle">Telefone:</h4>
@@ -39,34 +65,24 @@ const photoAlt = computed(
         </div>
         <div class="member-detail__info">
           <h4 class="member-detail__subtitle">Gênero:</h4>
-          <span>{{ member.gender }}</span>
+          <span>{{ gender }}</span>
         </div>
         <div class="member-detail__info">
           <h4 class="member-detail__subtitle">Registro:</h4>
-          <span>{{ member.registered.date }}</span>
+          <span>{{ registeredDate }}</span>
         </div>
         <div class="member-detail__info">
           <h4 class="member-detail__subtitle">Cidade:</h4>
-          <span
-            >{{ member.location.city + ' - ' + member.location.state }}
-          </span>
+          <span class="txt-capitalize">{{ city }}</span>
         </div>
         <div class="member-detail__info">
           <h4 class="member-detail__subtitle">Rua:</h4>
-          <span>{{ member.location.street }}</span>
+          <span class="txt-capitalize">{{ street }}</span>
         </div>
         <div class="member-detail__info">
           <h4 class="member-detail__subtitle">CEP:</h4>
           <span>{{ member.location.postcode }}</span>
         </div>
-      </div>
-      <div>
-        <RoundedAvatar
-          :alt="photoAlt"
-          :photo="photo"
-          :size="ESize.LG"
-          class="member-detail__photo"
-        />
       </div>
     </div>
     <div v-else-if="member === null" class="member-detail__error">
@@ -82,6 +98,11 @@ const photoAlt = computed(
   &__content {
     display: flex;
     flex-wrap: wrap;
+  }
+
+  &__photo {
+    margin-right: 100px;
+    margin-bottom: 50px;
   }
 
   &__data {

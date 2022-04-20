@@ -7,7 +7,7 @@ defineProps<{
 <template>
   <section class="page-layout">
     <Breadcrumb class="page-layout__navigation" />
-    <h2 class="page-layout__title">
+    <h2 v-if="title" class="page-layout__title">
       {{ title }}
     </h2>
     <slot />
