@@ -6,8 +6,8 @@ describe('Pagination', () => {
   const wrapper = mount(Pagination, {
     props: {
       activePage: 0,
-      totalPages: 10
-    }
+      totalPages: 10,
+    },
   })
 
   it('should render component', () => {
@@ -38,7 +38,7 @@ describe('Pagination', () => {
   it('short page should have right and left navs able when activePage is 1', async () => {
     await wrapper.setProps({
       activePage: 1,
-      totalPages: 3
+      totalPages: 3,
     })
     expect(leftNav.classes()).not.toContain('pagination__nav--disabled')
     expect(rightNav.classes()).not.toContain('pagination__nav--disabled')

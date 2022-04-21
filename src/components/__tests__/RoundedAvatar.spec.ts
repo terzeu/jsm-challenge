@@ -10,8 +10,8 @@ describe('RoundedAvatar', () => {
   const wrapper = mount(RoundedAvatar, {
     props: {
       alt: mockAlt,
-      photo: ''
-    }
+      photo: '',
+    },
   })
 
   it('should render component', () => {
