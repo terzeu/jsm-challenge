@@ -12,7 +12,6 @@ import FooterApp from '@/components/FooterApp.vue'
 
 <style lang="scss">
 @import '@/assets/_base.scss';
-@import '@/assets/_content.scss';
 @import '@/assets/_fonts.scss';
 @import '@/assets/_normalize.scss';
 @import '@/assets/_variables.scss';
