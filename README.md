@@ -6,7 +6,7 @@ This project was developed to complete the Juntos Somos + Frontend challenge.
 
 The backend was created to solve the CORS problem with the guiven API. How suggest by the challenge it is a BFF, so responsibilities like data pagination and filtering is have been guiven to the serve. Improments like data indenxing and response customization were also made.
 
-Project repository: [https://github.com/terzeu/jsm-challenge-bff](https://github.com/terzeu/jsm-challenge-bff)
+Project repository: [https://github.com/terzeu/jsm-challenge-bff](https://github.com/terzeu/jsm-challenge-bff)  
 The Server is hospeded in: [https://jsm-challenge-bff.herokuapp.com/](https://jsm-challenge-bff.herokuapp.com/)
 
 The problem: It was deployed with Heroku free cloud server, this implies in a [Dynos](https://devcenter.heroku.com/articles/free-dyno-hours#dyno-sleeping) limitation. When the serve no receive traffic for 30 minutes it sleeps causing a delay when is waking up again (after the server wake up the response is faster).
