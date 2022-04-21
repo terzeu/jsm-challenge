@@ -12,6 +12,8 @@ export function debounce<Params extends unknown[]>(
 }
 
 export const streetNormalize = (street: string) => {
-  const [number, streetWithoutNumber] = street.trim().split(' rua ')
-  return `Rua ${streetWithoutNumber}, ${number}`
+  const splitedStreet = street.trim().split(' ')
+  const number = splitedStreet[0]
+  const streetWithoutNumber = splitedStreet.slice(1).join(' ')
+  return `${streetWithoutNumber}, ${number}`
 }

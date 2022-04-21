@@ -13,7 +13,7 @@ const route = useRoute()
 const memberId = computed(() => Number(route.params.id))
 const genderTranslate = {
   [EGender.MALE]: 'Masculino',
-  [EGender.FEMALE]: 'Femenino',
+  [EGender.FEMALE]: 'Feminino',
   [EGender.OTHERS]: 'Outros',
 }
 
